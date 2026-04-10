@@ -1,0 +1,14 @@
+variable "location" { type = string }
+variable "resource_group_name" { type = string }
+variable "vnet_name" { type = string }
+variable "vnet_address_space" { type = list(string) }
+variable "subnet_name" { type = string }
+variable "subnet_prefixes" { type = list(string) }
+variable "aks_name" { type = string }
+variable "dns_prefix" { type = string }
+variable "node_count" { type = number }
+variable "min_count" { type = number }
+variable "max_count" { type = number }
+variable "vm_size" { type = string }
+variable "acr_name" { type = string }
+variable "log_analytics_workspace_name" { type = string }

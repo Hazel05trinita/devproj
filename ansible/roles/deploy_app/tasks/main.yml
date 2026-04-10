@@ -1,0 +1,28 @@
+---
+- name: Pull backend image
+  community.docker.docker_image:
+    name: "{{ lookup('env', 'REGISTRY') | default('docker.io/library', true) }}/backend:latest"
+    source: pull
+
+- name: Pull frontend image
+  community.docker.docker_image:
+    name: "{{ lookup('env', 'REGISTRY') | default('docker.io/library', true) }}/frontend:latest"
+    source: pull
+
+- name: Run backend container
+  community.docker.docker_container:
+    name: backend
+    image: "{{ lookup('env', 'REGISTRY') | default('docker.io/library', true) }}/backend:latest"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "5000:5000"
+
+- name: Run frontend container
+  community.docker.docker_container:
+    name: frontend
+    image: "{{ lookup('env', 'REGISTRY') | default('docker.io/library', true) }}/frontend:latest"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "80:80"

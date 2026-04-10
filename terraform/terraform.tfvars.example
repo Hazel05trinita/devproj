@@ -1,0 +1,14 @@
+location            = "eastus"
+resource_group_name = "rg-devops-demo"
+vnet_name           = "vnet-devops-demo"
+vnet_address_space  = ["10.10.0.0/16"]
+subnet_name         = "aks-subnet"
+subnet_prefixes     = ["10.10.1.0/24"]
+aks_name            = "aks-devops-demo"
+dns_prefix          = "aksdevopsdemo"
+node_count          = 2
+min_count           = 2
+max_count           = 4
+vm_size             = "Standard_B2s"
+acr_name            = "devopsdemoacr12345"
+log_analytics_workspace_name = "law-devops-demo"

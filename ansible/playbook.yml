@@ -1,0 +1,7 @@
+---
+- name: Prepare host and deploy app containers
+  hosts: app_hosts
+  become: true
+  roles:
+    - docker_setup
+    - deploy_app

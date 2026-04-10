@@ -1,0 +1,22 @@
+---
+- name: Install Docker dependencies
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+    update_cache: true
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install Docker engine
+  ansible.builtin.package:
+    name: docker.io
+    state: present
+
+- name: Ensure Docker is started and enabled
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
